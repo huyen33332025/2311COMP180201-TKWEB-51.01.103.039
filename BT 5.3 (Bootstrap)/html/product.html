@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết sản phẩm - FIT-HCMUE Shop</title>
+    <link rel="stylesheet" href="/BT 5.3 (Bootstrap)/css/layout.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container-fluid p-4">
+        <header class="hh-header d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <img class="hh-logo me-3" src="/BT 5.3 (Bootstrap)/images/logo.jfif" alt="Logo">
+                <div>
+                    <h1 class="hh-company mb-1">FIT-HCMUE Shop</h1>
+                    <h5 class="hh-slogan mb-0">Bring knowledge to everyone</h5>
+                </div>
+            </div>
+        </header>
+
+        <a href="/BT 5.3 (Bootstrap)/html/layout.html" class="btn btn-secondary mb-3">← Quay lại</a>
+
+        <div class="row g-4">
+            <div class = "col-lg-4 text-center">
+                <img id = "product-img" class = "product-img shadow-sm" src="">
+            </div>
+            <div class = "col-lg-5">
+                <p class="text-muted mb-1" id = "product-category"></p>
+                <h2 id = "product-name" class = "fw-bold mb-3"></h2>
+                <p class = "price" id = "product-price"></p>
+
+                <div class = "d-flex align-items-center mb-3">
+                    <label for = "quantity" class = "me-3 fw-semibold">Số lượng:</label>
+                    <input type = "number" id = "quantity" class = "form-control w-auto" value = "1" min = "1">
+                </div>
+
+                <div class = "mb-4">
+                    <button class = "btn btn-primary btn-custom me-2">Thêm vào giỏ</button>
+                    <button class = "btn btn-primary btn-custom me-2">Yêu thích</button>
+                </div>
+
+                <h5 class = "fw-semibold">Thông tin sản phẩm</h5>
+                <p id = "product-desc" class = "product-desc mt-2"></p>
+
+                <div class="mt-4">
+                    <h6 class="fw-semibold mb-2">🔗 Chia sẻ sản phẩm:</h6>
+                    <div class="share-buttons">
+                        <div class="share-btn" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank')">
+                            <i class="bi bi-facebook"></i> Facebook
+                        </div>
+                        <div class="share-btn" onclick="navigator.clipboard.writeText(window.location.href)">
+                            <i class="bi bi-link-45deg"></i> Sao chép liên kết
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 hh-sheet position-sticky" style="top: 20px;">
+                <div class="card hh-cart shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <strong>🛒 Giỏ hàng</strong>
+                    </div>
+                    <div class="card-body row align-items-center">
+                        <img class="col-5 img-fluid" src="/BT 5.3 (Bootstrap)/images/gio-hang.jpg" alt="Giỏ hàng">
+                        <ul class="col-7 list-unstyled small mb-0">
+                            <li>10 sản phẩm</li>
+                            <li>5,000,000đ</li>
+                            <li><a href="#" class="text-primary">Xem giỏ hàng</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card-header bg-light">
+                        <strong>🔍 Tìm kiếm</strong>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <input placeholder="Từ khóa..." class="form-control">
+                        </form>
+                    </div>
+
+                    <div class="card-header bg-light">
+                        <strong>📂 Chủng loại</strong>
+                    </div>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center filter-item" data-filter="dien-thoai">Điện thoại</a>
+                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center filter-item" data-filter="laptop">Laptop</a>
+                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center">Tablet</a>
+                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center">Điều hòa</a>
+                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center">Tivi</a>
+                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center">Tủ lạnh</a>
+                        <a href="#" class="list-group-item d-flex justify-content-between align-items-center">Điện gia dụng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="card mt-4">
+            <div class="card-body text-center">FIT-HCMUE &copy; 2025</div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const product = JSON.parse(localStorage.getItem("selectedProduct"));
+            if (!product){
+                document.body.innerHTML = "<div class='text-center mt-5'><h3>Không tìm thấy sản phẩm!</h3></div>";
+                return;
+            }
+            document.getElementById("product-name").textContent = product.name;
+            document.getElementById("product-price").textContent = product.price + "đ";
+            document.getElementById("product-img").src = product.img;
+            document.getElementById("product-category").textContent =  "📦 " + (product.category || "Sản phẩm");
+
+            const formatdesc = product.desc.split("•").filter(line => line.trim() !== "").map(line => "• " + line.trim()).join("<br>");
+            
+            document.getElementById("product-desc").innerHTML = formatdesc
+        });
+
+    </script>
+    <script></script>
+</body>
+</html>

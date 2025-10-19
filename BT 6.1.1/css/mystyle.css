@@ -1,0 +1,118 @@
+body {
+    overflow: hidden;
+}
+
+#controlPanel {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+#controlPanel button {
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    background: #ffffffaa;
+    color: #003366;
+    box-shadow: 0 4px 10px #00000033;
+    transition: all 0.3s ease;
+}
+#controlPanel button:hover {
+    background: #00bfff;
+    color: white;
+    transform: translateY(-2px);
+}
+
+#aquarium {
+    width: 90%;
+    height: 70vh;
+    background: linear-gradient(to bottom, #0099cc, #003366);
+    border: 5px solid #ffffff44;
+    position: relative;
+
+    background-size: cover;          
+    background-position: center;     
+    background-repeat: no-repeat;   
+    transition: background-image 1s ease-in-out;
+}
+
+#aquarium img {
+    height: auto;
+    width: 120px;
+    user-select: none;
+}
+
+#shark {
+    left: 0;
+    bottom: 150px;
+    position: absolute;
+    animation: SharkMove 10s linear infinite alternate;
+}
+
+#turtle {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    animation: turtleMove 25s linear infinite alternate;
+}
+
+#diver1, #diver2, #diver3 {
+    position: absolute;
+    animation: diverFloat 10s ease-in-out infinite alternate;
+}
+
+#diver1 { left: 200px; bottom: 100px; animation-delay: 0s; }
+#diver2 { left: 600px; bottom: 200px; animation-delay: 2s; }
+#diver3 { left: 1000px; bottom: 150px; animation-delay: 4s; }
+
+#goldFishSchool {
+    position: absolute;
+    bottom: 250px;
+    left: 0;
+    animation: fishSwim 15s linear infinite alternate;
+}
+
+#faintSchool1, #faintSchool2, #faintSchool3 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 500px;
+    opacity: 0.8;
+    animation: bubbleRise 12s ease-in infinite forwards;
+}
+
+#faintSchool1 {left: 100px; bottom: 100px; animation-delay: 0s;}
+#faintSchool2 {left: 550px; bottom: 200px; animation-delay: 2s;}
+#faintSchool3 {left: 1100px; bottom: 150px; animation-delay: 4s;}
+
+@keyframes SharkMove {
+    0% { left: 0; transform: scaleX(1); }
+    100% { left: calc(100% - 150px); transform: scaleX(-1); }
+}
+
+@keyframes turtleMove {
+    0% { right: 0; transform: scaleX(-1); }
+    100% { right: calc(100% - 150px); transform: scaleX(1); }
+}
+
+@keyframes diverFloat {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-200px); }
+}
+
+@keyframes fishSwim {
+    0% { left: 0; transform: scaleX(1); }
+    100% { left: calc(100% - 200px); transform: scaleX(-1); }
+}
+
+@keyframes bubbleRise {
+    0% {
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-700px);
+        opacity: 0;
+    }
+}
