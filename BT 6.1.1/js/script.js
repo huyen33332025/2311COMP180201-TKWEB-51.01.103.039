@@ -15,9 +15,9 @@ musicBtn.addEventListener("click", () => {
 
 const aquarium = document.getElementById("aquarium");
 const bgImages = [
-    "/BT 6.1.1/images/nen-1.jpeg",
-    "/BT 6.1.1/images/nen-2.jpg",
-    "/BT 6.1.1/images/nen-3.webp",
+    "../images/nen-1.jpeg",
+    "../images/nen-2.jpg",
+    "../images/nen-3.webp",
 ];
 let currentBg = 0;
 aquarium.style.backgroundImage = `url('${bgImages[currentBg]}')`;
