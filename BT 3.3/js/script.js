@@ -1,54 +1,81 @@
-const addBtn = document.getElementById("addBtn");
-const input = document.querySelector("input[name='product']");
-const display = document.querySelector(".Display-Container");
-const countSpan = document.getElementById("productCount");
+document.addEventListener('DOMContentLoaded', () => {
+    const productInput = document.getElementById('productInput');
+    const addBtn = document.getElementById('addBtn');
+    const productListContainer = document.getElementById('product-list-container');
+    const productCount = document.getElementById('productCount');
 
-function updateCount() {
-    const count = display.querySelectorAll(".product-item").length;
-    countSpan.textContent = count;
-}
+    let products = JSON.parse(localStorage.getItem('products')) || [];
 
-function addProduct(){
-    const productName = input.value.trim();
-    if (productName === "") {
-        alert("Vui lòng nhập tên sản phẩm!");
-        return;
-    }
+    const renderProducts = () => {
+        productListContainer.innerHTML = ''; 
 
-    const productDiv = document.createElement("div");
-    productDiv.classList.add("product-item");
-    productDiv.innerHTML = `
-        <span class="product-name">${productName}</span>
-        <div class="product-actions">
-            <button class="btn btn-sm btn-primary edit-btn">Edit</button>
-            <button class="btn btn-sm btn-danger delete-btn">Delete</button>
-        </div>
-    `;
-    display.appendChild(productDiv);
-    input.value = "";
-    updateCount();
+        if (products.length === 0) {
+            productListContainer.innerHTML = `
+                <div class="empty-state text-center">
+                    <i class="bi bi-clipboard-x-fill"></i>
+                    <p>Chưa có sản phẩm nào.</p>
+                </div>
+            `;
+        } else {
+            products.forEach((product, index) => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'product-item';
+                productDiv.innerHTML = `
+                    <span class="product-name">${product}</span>
+                    <div class="product-actions">
+                        <button class="btn btn-edit" data-index="${index}"><i class="bi bi-pencil-fill"></i></button>
+                        <button class="btn btn-delete" data-index="${index}"><i class="bi bi-trash-fill"></i></button>
+                    </div>
+                `;
+                productListContainer.appendChild(productDiv);
+            });
+        }
+        productCount.textContent = products.length;
+        localStorage.setItem('products', JSON.stringify(products));
+    };
 
-    const editBtn = productDiv.querySelector(".edit-btn");
-    editBtn.addEventListener("click", () => {
-        const newName = prompt("Nhập tên mới cho sản phẩm:", productName);
-        if (newName && newName.trim() !== "") {
-            productDiv.querySelector(".product-name").textContent = newName.trim();
+    const addProduct = () => {
+        const productName = productInput.value.trim();
+        if (productName) {
+            products.push(productName);
+            productInput.value = '';
+            renderProducts();
+        }
+    };
+
+    const editProduct = (index) => {
+        const newName = prompt('Nhập tên mới cho sản phẩm:', products[index]);
+        if (newName && newName.trim() !== '') {
+            products[index] = newName.trim();
+            renderProducts();
+        }
+    };
+
+    const deleteProduct = (index) => {
+        if (confirm(`Bạn có chắc muốn xóa sản phẩm "${products[index]}"?`)) {
+            products.splice(index, 1);
+            renderProducts();
+        }
+    };
+
+    addBtn.addEventListener('click', addProduct);
+    productInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            addProduct();
         }
     });
 
-    const deleteBtn = productDiv.querySelector(".delete-btn");
-    deleteBtn.addEventListener("click", () => {
-        if (confirm("Bạn có chắc muốn xoá sản phẩm này không?")) {
-            productDiv.remove();
-            updateCount();
+    productListContainer.addEventListener('click', (e) => {
+        const target = e.target.closest('button');
+        if (!target) return;
+
+        const index = target.dataset.index;
+        if (target.classList.contains('btn-edit')) {
+            editProduct(index);
+        } else if (target.classList.contains('btn-delete')) {
+            deleteProduct(index);
         }
     });
-}
 
-addBtn.addEventListener("click", addProduct);
-input.addEventListener("keypress", (event) => {
-    if (event.key == "Enter"){
-        event.preventDefault();
-        addProduct();
-    }
+    renderProducts();
 });
