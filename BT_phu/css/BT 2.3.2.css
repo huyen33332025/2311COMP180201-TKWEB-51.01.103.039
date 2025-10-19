@@ -1,0 +1,49 @@
+.menu_ngang {
+    width: 960px;
+    height: 50px;
+    background-color: #CCC;
+}
+
+.menu_ngang ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: left;
+}
+
+.menu_ngang ul li {
+    float: left;
+    position: relative;
+}
+
+.menu_ngang ul li a {
+    text-decoration: none;
+    padding: 0 20px;
+    color: #333;
+    line-height: 50px;
+    border-right: 1px solid #333;
+}
+
+.menu_ngang ul li ul {
+    position: absolute;
+    background-color: #ccc;
+    display: none;
+    width: 110%;
+}
+
+.menu_ngang ul li ul li a {
+    border-right: none;
+    border-bottom: 1px solid #fff;
+    line-height: 30px;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+.menu_ngang ul li ul li a:hover {
+    font-weight: bold;
+}
+
+.menu_ngang ul li:hover ul {
+    display: block;
+}
