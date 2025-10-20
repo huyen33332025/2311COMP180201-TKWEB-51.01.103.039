@@ -1,354 +1,279 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Halloween Festival - Đêm Hồi Hộp</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root{--accent:#ff6b6b;--dark:#0b0b0b;--muted:#999}
-    body{background:#080808;color:#f6f6f6;font-family:Inter, system-ui, Arial}
-    header{background:linear-gradient(180deg,#0b0b0b 0%,#1a0f15 100%);padding:40px 0}
-    .ghost{font-family: 'Creepster', cursive;letter-spacing:2px}
-    .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.04)}
-    .product-list li{cursor:pointer}
-    .product-detail{min-height:150px}
-    .gallery img{height:200px;object-fit:cover;width:100%}
-    footer{padding:20px 0;color:var(--muted);text-align:center}
-    .audio-fixed{position:fixed;right:16px;bottom:16px;z-index:999}
-    .video-wrap{background:#000;padding:10px;border-radius:8px}
-    .team-avatar{width:120px;height:120px;object-fit:cover;border-radius:50%;border:3px solid rgba(255,255,255,0.06)}
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đêm Hội Halloween Kinh Hoàng</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
-<header class="text-center text-white">
-  <div class="container">
-    <h1 class="ghost display-4">Halloween Festival — Đêm Hồi Hộp</h1>
-    <p class="lead">Sợ? Chill? Cứ thoải mái, team chúng tôi đã lo hết!</p>
-  </div>
-</header>
-
-<main class="container my-5">
-  <!-- Giới thiệu thành viên -->
-  <section id="team" class="mb-5">
-    <h2>Meet the Crew — Thành viên nhóm</h2>
-    <div class="row gy-3">
-      <div class="col-md-4">
-        <div class="card p-3 h-100">
-          <div class="d-flex gap-3 align-items-center">
-            <img class="team-avatar" src="https://picsum.photos/seed/lead/200" alt="Thành viên A">
-            <div>
-              <h5>Nguyễn "Ghoul" A</h5>
-              <p class="mb-0"><small>Trưởng nhóm / Pumpkin designer</small></p>
-              <p class="mb-0 text-muted">Chuyên điêu khắc bí ngô (nhưng cũng hay quên chìa khóa).</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card p-3 h-100">
-          <div class="d-flex gap-3 align-items-center">
-            <img class="team-avatar" src="https://picsum.photos/seed/dev/200" alt="Thành viên B">
-            <div>
-              <h5>Trần "Spook" B</h5>
-              <p class="mb-0"><small>Dev & Sound tech</small></p>
-              <p class="mb-0 text-muted">Lập trình hiệu ứng âm thanh, nghe nhạc 3h sáng.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card p-3 h-100">
-          <div class="d-flex gap-3 align-items-center">
-            <img class="team-avatar" src="https://picsum.photos/seed/des/200" alt="Thành viên C">
-            <div>
-              <h5>Phạm "Witch" C</h5>
-              <p class="mb-0"><small>Designer & Event planner</small></p>
-              <p class="mb-0 text-muted">Tạo không khí rùng rợn — nhưng vẫn xinh.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <div id="spooky-background">
+        <img src="../images/Pumpkin.ico" class="spooky-icon pumpkin" alt="">
+        <img src="../images/Pumpkin.ico" class="spooky-icon pumpkin" alt="">
+        <img src="../images/Pumpkin.ico" class="spooky-icon pumpkin" alt="">
+        <img src="../images/Pumpkin.ico" class="spooky-icon pumpkin" alt="">
+        <img src="../images/Pumpkin.ico" class="spooky-icon pumpkin" alt="">
+        <img src="../images/Pumpkin.ico" class="spooky-icon pumpkin" alt="">
     </div>
-  </section>
+    <div id="music-control"><i id="music-icon" class="bi bi-volume-up-fill"></i></div>
+    <audio id="bg-music" src="../assets/Iframe Cozy Autumn Village Halloween Ambience 🎃 Scary Halloween Sounds👻 Halloween Background Music [vuPhCSunt5U] (mp3cut.net).mp3" loop></audio>
 
-  <!-- Lịch sử Halloween -->
-  <section id="history" class="mb-5">
-    <h2>Lịch sử Halloween — Ngắn gọn, dễ nhớ</h2>
-    <div class="card p-3">
-      <p>
-        Halloween bắt nguồn từ lễ Samhain của người Celt (khoảng trước công nguyên), là dịp kết thúc mùa vụ và bắt đầu mùa đông — thời điểm gắn với linh hồn và ma quỷ. Qua hàng thế kỷ, lễ này hòa vào truyền thống Kitô giáo (All Hallows' Eve) và dần phát triển thành ngày lễ <em>Halloween</em> như ngày nay: hóa trang, đốt bí ngô, "trick or treat" và tiệc tùng.
-      </p>
-      <p class="text-muted small">Tip: bạn có thể mở rộng phần này bằng timeline, audio tự kể chuyện, hoặc link tài liệu tham khảo.</p>
-    </div>
-  </section>
-
-  <!-- Gian hàng sản phẩm (List + chi tiết, xài jQuery) -->
-  <section id="shop" class="mb-5">
-    <h2>Gian hàng — Shop kinh dị</h2>
-    <div class="row">
-      <div class="col-md-5">
-        <ul id="productList" class="list-group product-list">
-          <li class="list-group-item" data-id="1">Bí ngô phát sáng — "Jack Glow"</li>
-          <li class="list-group-item" data-id="2">Mặt nạ ma — "Silent Stare"</li>
-          <li class="list-group-item" data-id="3">Combo âm thanh rùng rợn (10 track)</li>
-          <li class="list-group-item" data-id="4">Trang phục phù thủy — Limited</li>
-        </ul>
-      </div>
-      <div class="col-md-7">
-        <div id="productDetail" class="card p-3 product-detail">
-          <h5>Chi tiết sản phẩm</h5>
-          <div id="detailContent">
-            <p>Nhấn vào một sản phẩm ở bên trái để xem chi tiết. (Xài jQuery để xử lý DOM)</p>
-          </div>
-          <div class="mt-3">
-            <button id="buyBtn" class="btn btn-outline-warning">Mua ngay</button>
-            <button id="moreBtn" class="btn btn-outline-light">Thêm vào wishlist</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bộ sưu tập hình ảnh -->
-  <section id="gallery" class="mb-5">
-    <h2>Bộ sưu tập hình ảnh kinh dị</h2>
-    <div class="row g-2 gallery">
-      <div class="col-6 col-md-3"><img data-src="https://picsum.photos/seed/gh1/800/600" class="img-thumbnail shadow-sm" alt="img1"></div>
-      <div class="col-6 col-md-3"><img data-src="https://picsum.photos/seed/gh2/800/600" class="img-thumbnail shadow-sm" alt="img2"></div>
-      <div class="col-6 col-md-3"><img data-src="https://picsum.photos/seed/gh3/800/600" class="img-thumbnail shadow-sm" alt="img3"></div>
-      <div class="col-6 col-md-3"><img data-src="https://picsum.photos/seed/gh4/800/600" class="img-thumbnail shadow-sm" alt="img4"></div>
-    </div>
-
-    <!-- Modal xem ảnh lớn -->
-    <div class="modal fade" id="imgModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark text-white">
-          <div class="modal-body p-0">
-            <img id="modalImg" src="" alt="" style="width:100%;height:auto;display:block">
-          </div>
-          <div class="modal-footer border-top-0">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Video và âm thanh -->
-  <section id="media" class="mb-5">
-    <h2>Media: Video & Âm thanh</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="video-wrap card p-3">
-          <h6>Trailer sự kiện</h6>
-          <!-- sample video: replace với file thật -->
-          <video controls width="100%" id="eventVideo">
-            <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
-            Trình duyệt của bạn không hỗ trợ video.
+    <main>
+      <section id="team" class="py-5 section-dark">
+        <div class="team-video-container">
+          <video autoplay muted loop class="team-video team-video-left">
+              <source src="../assets/tiktok_nwm_7560300037536894215.mp4" type="video/mp4">
+          </video>
+          <video autoplay muted loop class="team-video team-video-right">
+              <source src="../assets/tiktok_nwm_7560300037536894215.mp4" type="video/mp4">
           </video>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="card p-3">
-          <h6>Âm thanh nền</h6>
-          <p class="small text-muted">Nhấn Play để bật background sound (tránh autoplay gây khó chịu).</p>
-          <div class="d-flex gap-2 align-items-center">
-            <button id="playSound" class="btn btn-outline-light">Play spooky</button>
-            <button id="stopSound" class="btn btn-outline-secondary">Stop</button>
-            <span id="soundStatus" class="ms-2 text-muted">Tắt</span>
+          <div class="container text-center fade-in">
+              <h2 class="section-title">The Gatekeeper</h2>
+              <div class="d-flex justify-content-center mt-5">
+                  <div class="team-card glass-card" style="max-width: 350px;">
+                      <img src="../images/avatar.jpg" alt="Mastermind" class="team-avatar">
+                      <h4 class="mt-3">Nguyen Van Huyen</h4>
+                      <p class="text-white-50">The creator of this nightmare</p>
+                  </div>
+              </div>
           </div>
-          <audio id="bgAudio" loop>
-            <!-- Thay link audio bằng file thực tế -->
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-            Trình duyệt không hỗ trợ audio.
-          </audio>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Form liên hệ -->
-  <section id="contact" class="mb-5">
-    <h2>Trang liên hệ</h2>
-    <div class="card p-3">
-      <form id="contactForm">
-        <div class="mb-3">
-          <label class="form-label">Họ tên</label>
-          <input type="text" name="name" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Tin nhắn</label>
-          <textarea name="message" class="form-control" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-warning">Gửi</button>
-        <div id="contactMsg" class="mt-2"></div>
-      </form>
-    </div>
-  </section>
+        <section id="history" class="py-5">
+            <div class="container fade-in">
+                <h2 class="section-title text-center">A Creepy Origin</h2>
+                <p class="lead text-center mt-3 mb-5">From an ancient Celtic ritual to a global celebration, the history of Halloween is full of spooky transformations.</p>
 
-  <!-- Form đăng ký tham gia lễ hội -->
-  <section id="register" class="mb-5">
-    <h2>Đăng ký tham gia lễ hội</h2>
-    <div class="card p-3">
-      <form id="regForm">
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label class="form-label">Họ tên</label>
-            <input type="text" name="fullname" class="form-control" required>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label class="form-label">Số điện thoại</label>
-            <input type="tel" name="phone" class="form-control" required>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Bạn muốn tham gia (chọn ít nhất 1)</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="costume" id="opt1" name="activities">
-            <label class="form-check-label">Cuộc thi hóa trang</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="scaryhouse" id="opt2" name="activities">
-            <label class="form-check-label">Nhà ma</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="workshops" id="opt3" name="activities">
-            <label class="form-check-label">Workshop trang điểm</label>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Ghi chú (tùy chọn)</label>
-          <textarea name="note" class="form-control" rows="2"></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">Đăng ký</button>
-        <div id="regMsg" class="mt-2"></div>
-      </form>
-    </div>
-  </section>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h4>The Celtic Roots: Samhain</h4>
+                        <p class="text-white-50">Halloween's origins date back over 2,000 years to the ancient Celtic festival of **Samhain** (pronounced "sow-in"). This festival celebrated the end of summer and the harvest and marked the beginning of the dark, cold winter, a time of year that was often associated with death.</p>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h4>A Night of Ghosts</h4>
+                        <p class="text-white-50">Celts believed that on the night before the new year, the boundary between the worlds of the living and the dead became blurred. They celebrated Samhain on October 31st, when it was believed that the ghosts of the dead returned to earth. To ward off these spirits, people would light bonfires and wear costumes, typically consisting of animal heads and skins.</p>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h4>Christian Influence: All Hallows' Eve</h4>
+                        <p class="text-white-50">In the eighth century, Pope Gregory III designated November 1st as a time to honor all saints. This celebration, **All Saints' Day**, incorporated some of the traditions of Samhain. The evening before was known as **All Hallows' Eve**, which later became "Halloween." This was a deliberate effort by the church to blend pagan traditions with Christian ones.</p>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h4>Halloween Comes to America</h4>
+                        <p class="text-white-50">The celebration of Halloween was extremely limited in colonial New England because of the rigid Protestant belief systems. However, it was much more common in the southern colonies. As Irish and Scottish immigrants arrived in America in the 19th century, they brought their Halloween traditions with them, helping to popularize the holiday nationwide.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-</main>
+        <section id="shop" class="py-5 section-dark">
+            <div class="container fade-in">
+                <h2 class="section-title text-center">The Ghastly Goods</h2>
+                
+                <div class="row g-4 mt-5">
 
-<footer>
-  <div class="container">
-    <small>© Halloween Festival — Stay spooky. Replace sample media with your own files.</small>
-  </div>
-</footer>
+                    <div class="col-lg-6">
+                        <div class="product-card">
+                            <img src="../images/Iconcreme-Halloween-Pumpkin.512.png" alt="Carved Pumpkin" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Carved Pumpkin</h4>
+                                <p class="product-desc">Handcrafted with the scariest faces. Perfect for your porch.</p>
+                                <div class="product-price">$10.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Iconcreme-Halloween-Cat.512.png" alt="Black Cat Statue" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Black Cat Statue</h4>
+                                <p class="product-desc">A mysterious statue with glowing green eyes to watch over your home.</p>
+                                <div class="product-price">$15.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Iconcreme-Halloween-Home.512.png" alt="Haunted House Lantern" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Haunted House Lantern</h4>
+                                <p class="product-desc">A miniature haunted house that lights up with an eerie, flickering glow.</p>
+                                <div class="product-price">$20.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Soul.ico" alt="Floating Ghost Prop" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Floating Ghost Prop</h4>
+                                <p class="product-desc">A lightweight ghost that appears to float in mid-air. Guaranteed to scare!</p>
+                                <div class="product-price">$18.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Sea Monster.ico" alt="Sea Monster Figurine" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Sea Monster Figurine</h4>
+                                <p class="product-desc">A detailed figurine of a creature from the deep, dark abyss.</p>
+                                <div class="product-price">$22.00</div>
+                            </div>
+                        </div>
+                    </div>
 
-<!-- Audio control floating (small) -->
-<div class="audio-fixed">
-  <button id="miniPlay" class="btn btn-sm btn-warning">Play</button>
-  <button id="miniPause" class="btn btn-sm btn-secondary">Pause</button>
-</div>
+                    <div class="col-lg-6">
+                        <div class="product-card">
+                            <img src="../images/Iconcreme-Halloween-Bat.512.png" alt="Spooky Bat Decals" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Spooky Bat Decals</h4>
+                                <p class="product-desc">A set of 12 vinyl bat decals to create a terrifying swarm on your walls.</p>
+                                <div class="product-price">$5.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Iconcreme-Halloween-Mummy.512.png" alt="Mummy Costume Kit" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Mummy Costume Kit</h4>
+                                <p class="product-desc">Includes realistic bandages and a mask to become an ancient horror.</p>
+                                <div class="product-price">$25.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Iconcreme-Halloween-Twitter.512.png" alt="Eerie Glow Candle" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Eerie Glow Candle</h4>
+                                <p class="product-desc">A slow-burning candle that casts spooky shadows on your walls.</p>
+                                <div class="product-price">$8.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Witch.ico" alt="Witch's Brew Cauldron" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Witch's Brew Cauldron</h4>
+                                <p class="product-desc">A bubbling cauldron prop with green LED lights and fog effects.</p>
+                                <div class="product-price">$30.00</div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="../images/Pumpkin.ico" alt="Pumpkin Spice Scent" class="product-card-img">
+                            <div class="product-card-body">
+                                <h4 class="product-title">Pumpkin Spice Scent</h4>
+                                <p class="product-desc">Fill your home with the classic, comforting scent of autumn.</p>
+                                <div class="product-price">$7.00</div>
+                            </div>
+                        </div>
+                    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-// --- Data sản phẩm ---
-const products = {
-  1: {title: 'Bí ngô phát sáng — Jack Glow', price: '350.000 VND', desc: 'Bí ngô khắc tay, kèm đèn LED đổi màu, chống nước nhẹ.', img:'https://picsum.photos/seed/p1/600/400'},
-  2: {title: 'Mặt nạ ma — Silent Stare', price: '220.000 VND', desc: 'Mặt nạ nhựa ABS cao cấp, đeo thoải mái, kích thước one-size.', img:'https://picsum.photos/seed/p2/600/400'},
-  3: {title: 'Combo âm thanh rùng rợn (10 track)', price: '150.000 VND', desc: 'Gói 10 file âm thanh ambient, dễ dàng phát ở bất kỳ loa nào.', img:'https://picsum.photos/seed/p3/600/400'},
-  4: {title: 'Trang phục phù thủy — Limited', price: '650.000 VND', desc: 'Vải cao cấp, may chuẩn, mũ + áo + đai. Hàng giới hạn.', img:'https://picsum.photos/seed/p4/600/400'}
-};
+                </div>
+            </div>
+        </section>
 
-// jQuery xử lý list -> detail
-$(function(){
-  $('#productList li').on('click', function(){
-    const id = $(this).data('id');
-    const p = products[id];
-    const html = `
-      <div class="row">
-        <div class="col-md-5"><img src="${p.img}" alt="${p.title}" class="img-fluid rounded"></div>
-        <div class="col-md-7">
-          <h4>${p.title}</h4>
-          <p class="text-warning fw-bold">${p.price}</p>
-          <p>${p.desc}</p>
-          <p><small class="text-muted">SKU: HV-${id.toString().padStart(3,'0')}</small></p>
-        </div>
-      </div>
-    `;
-    $('#detailContent').html(html);
-    // highlight
-    $('#productList li').removeClass('active');
-    $(this).addClass('active');
-  });
+        <section id="gallery" class="py-5">
+            <div class="container fade-in">
+                <h2 class="section-title text-center">Horror Gallery</h2>
+                <p class="lead text-center mt-3 mb-5">A collection of nightmares captured in images. Look if you dare.</p>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-card">
+                            <img src="../images/anh-1.webp" alt="Horror Image 1" class="gallery-img">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-card">
+                            <img src="../images/anh-2.webp" alt="Horror Image 2" class="gallery-img">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-card">
+                            <img src="../images/anh-3.webp" alt="Horror Image 3" class="gallery-img">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-card">
+                            <img src="../images/anh-4.webp" alt="Horror Image 4" class="gallery-img">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-card">
+                            <img src="../images/anh-6.webp" alt="Horror Image 6" class="gallery-img">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-card">
+                            <img src="../images/anh-7.webp" alt="Horror Image 6" class="gallery-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  // buy button fake
-  $('#buyBtn').on('click', function(){
-    const active = $('#productList li.active');
-    if(!active.length){ alert('Chọn sản phẩm muốn mua trước nhé!'); return; }
-    const title = products[active.data('id')].title;
-    alert('Cảm ơn! Đã thêm "' + title + '" vào giỏ (demo).');
-  });
+        <section id="contact" class="py-5 section-dark">
+            <div class="container fade-in">
+                <div class="row">
 
-  $('#moreBtn').on('click', function(){
-    alert('Đã thêm vào wishlist (demo).');
-  });
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h2 class="section-title text-center mb-4">Message from the Beyond</h2>
+                        <form>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="input-group mb-4">
+                                <span class="input-group-text"><i class="bi bi-chat-left-quote-fill"></i></span>
+                                <textarea class="form-control" rows="4" placeholder="Your spooky message..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-creepy w-100">Send Message</button>
+                        </form>
+                    </div>
 
-  // gallery: lazy src swap + modal
-  $('.gallery img').each(function(){
-    const src = $(this).attr('data-src');
-    $(this).attr('src', src);
-  });
-  $('.gallery img').on('click', function(){
-    $('#modalImg').attr('src', $(this).attr('src'));
-    var m = new bootstrap.Modal(document.getElementById('imgModal'));
-    m.show();
-  });
+                    <div id="register" class="col-lg-6">
+                        <h2 class="section-title text-center mb-4">Join the Festival</h2>
+                        <form>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-person-fill-add"></i></span>
+                                <input type="text" class="form-control" placeholder="Full Name" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-envelope-at-fill"></i></span>
+                                <input type="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-people-fill"></i></span>
+                                <input type="number" class="form-control" placeholder="Number of Guests" min="1" required>
+                            </div>
+                            <div class="input-group mb-4">
+                                <span class="input-group-text"><i class="bi bi-mask"></i></span>
+                                <select class="form-select" required>
+                                    <option selected disabled value="">Choose your costume...</option>
+                                    <option>Vampire</option>
+                                    <option>Witch / Wizard</option>
+                                    <option>Ghost</option>
+                                    <option>Zombie</option>
+                                    <option>Other...</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-creepy w-100">Confirm Attendance</button>
+                        </form>
+                    </div>
 
-  // audio controls
-  const audio = document.getElementById('bgAudio');
-  $('#playSound, #miniPlay').on('click', function(){
-    audio.play();
-    $('#soundStatus').text('Đang phát');
-  });
-  $('#stopSound, #miniPause').on('click', function(){
-    audio.pause();
-    $('#soundStatus').text('Tắt');
-  });
+                </div>
+            </div>
+        </section>
+    </main>
 
-  // contact form (demo: validate + fake submit)
-  $('#contactForm').on('submit', function(e){
-    e.preventDefault();
-    const name = $(this).find('[name=name]').val().trim();
-    const email = $(this).find('[name=email]').val().trim();
-    const msg = $(this).find('[name=message]').val().trim();
-    if(!name || !email || !msg){ $('#contactMsg').text('Vui lòng điền đủ thông tin.').addClass('text-danger'); return; }
-    // fake ajax
-    $('#contactMsg').removeClass('text-danger').text('Đang gửi...');
-    setTimeout(()=>{
-      $('#contactMsg').text('Cảm ơn ' + name + '! Chúng tôi sẽ liên hệ qua ' + email + '.').addClass('text-success');
-      $('#contactForm')[0].reset();
-    }, 900);
-  });
+    <a href="#" id="scrollTopBtn" class="scroll-to-top">
+        <i class="bi bi-arrow-up"></i>
+    </a>
 
-  // registration form
-  $('#regForm').on('submit', function(e){
-    e.preventDefault();
-    const fullname = $(this).find('[name=fullname]').val().trim();
-    const phone = $(this).find('[name=phone]').val().trim();
-    const activities = $(this).find('input[name=activities]:checked');
-    if(!fullname || !phone){ $('#regMsg').text('Họ tên & số điện thoại là bắt buộc').addClass('text-danger'); return; }
-    if(!activities.length){ $('#regMsg').text('Chọn ít nhất 1 hoạt động nhé').addClass('text-danger'); return; }
-    $('#regMsg').removeClass('text-danger').text('Đang xử lý...');
-    setTimeout(()=>{
-      $('#regMsg').text('Đăng ký thành công! Chúng tôi sẽ gửi thông tin chi tiết qua SMS/Email.').addClass('text-success');
-      $('#regForm')[0].reset();
-    }, 1000);
-  });
-
-});
-</script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="../js/script.js"></script>
 </body>
 </html>
