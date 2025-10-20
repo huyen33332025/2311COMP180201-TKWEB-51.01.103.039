@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT 2.5.1</title>
+    <link rel="stylesheet" href="../css/BT 2.5.1.css">
+</head>
+<body id="form1">
+    <form>
+        <table width="500" cellspacing="0" cellpadding="4">
+            <caption>ĐĂNG KÝ THÀNH VIÊN CLB YÊU NHẠC</caption>
+            
+            <tr>
+                <td>Họ tên</td>
+                <td><input type="text" id="txtHoTen" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Tên đăng nhập</td>
+                <td><input type="text" id="txtUserName" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Mật khẩu</td>
+                <td><input type="password" id="txtPass" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Gõ lại mật khẩu</td>
+                <td><input type="password" id="txtRepass" class="mytextbox" required></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td>
+                    <input type="radio" name="rdGioiTinh" id="rdNam" value="Nam" checked>
+                    <label for="rdNam">Nam</label>
+                    <input type="radio" name="rdGioiTinh" id="rdNu" value="Nữ">
+                    <label for="rdNu">Nữ</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Độ tuổi</td>
+                <td class="age-slider-container">
+                    <span>18</span>
+                    <input type="range" id="rngTuoi" min="18" max="45" value="20">
+                    <span>45</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Thành phố</td>
+                <td>
+                    <input list="thanhpho-list" id="txtThanhPho" class="mytextbox" placeholder="Nhập hoặc chọn thành phố...">
+                    <datalist id="thanhpho-list">
+                        <option value="TP. Hồ Chí Minh"></option>
+                        <option value="Hà Nội"></option>
+                        <option value="Đà Nẵng"></option>
+                        <option value="Cần Thơ"></option>
+                        <option value="Hải Phòng"></option>
+                        <option value="Huế"></option>
+                        <option value="Nha Trang"></option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>Ngoại ngữ</td>
+                <td>
+                    <input type="checkbox" id="chkAnh"> <label for="chkAnh">Anh văn</label>
+                    <input type="checkbox" id="chkPhap"> <label for="chkPhap">Pháp văn</label>
+                    <input type="checkbox" id="chkHoa"> <label for="chkHoa">Hoa văn</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Nghề nghiệp</td>
+                <td>
+                    <select id="cboNgheNghiep" class="mytextbox">
+                        <option value="0" selected disabled>-- Bạn làm nghề gì --</option>
+                        <option value="1">Học sinh - Sinh viên</option>
+                        <option value="2">Giáo viên</option>
+                        <option value="3">Nhân viên văn phòng</option>
+                        <option value="4">Khác</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Hình đại diện</td>
+                <td><input type="file" id="fHinh"></td>
+            </tr>
+            <tr>
+                <td>Sở thích</td>
+                <td><textarea id="txtSoThich" class="mytextbox" rows="3"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center" class="button-row">
+                    <input type="submit" id="btnDangKy" value="Đăng ký">
+                    <input type="reset" id="btnXoa" value="Làm lại">
+                    <input type="hidden" name="NgayDangKy" value="03/23/2023">
+                </td>
+            </tr>
+        </table>
+    </form>
+    </body>
+</html>
